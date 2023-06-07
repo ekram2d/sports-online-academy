@@ -1,13 +1,13 @@
 import React from 'react';
-import ThemeToggle from '../ThemeToggle/ThemeToggle';
+
+import Slider from './Slider/Slider';
+
 
 const Home = () => {
       return (
-            <div>
+            <div className=''>
                  
-                  kkdjsffffffffffffff
-                  kdsfj
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis, obcaecati!
+               <Slider></Slider>
                   
             </div>
       );

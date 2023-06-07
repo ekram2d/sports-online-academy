@@ -18,8 +18,8 @@ const NavBar = () => {
 
   const navOptions = <>
     <li><Link to='/'>Home</Link></li>
-    <li><Link to='/menu'>Our Menu</Link></li>
-    <li><Link to='/order/salad'>Order Food</Link></li>
+    <li><Link to='/menu'>Instructors</Link></li>
+    <li><Link to='/order/salad'>classes</Link></li>
     {/* ={isAdmin ?'/dashboard/adminhome':'/dashboard/userhome'} */}
     <li><Link to='/'>DashBoard</Link></li>
     <li><Link to="/dashboard/mycart">
@@ -43,7 +43,7 @@ onClick={handlelogOut}*/}
 
   </>
   return (
-    <div className="navbar  fixed z-10 bg-slate-950 text-white max-w-screen-lg">
+    <div className="navbar  fixed z-10 bg-opacity-50 bg-black text-white max-w-screen-lg ">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -54,7 +54,7 @@ onClick={handlelogOut}*/}
 
           </ul>
         </div>
-        <a className="btn btn-ghost normal-case text-xl">Bistro Boss</a>
+        <a className="btn btn-ghost normal-case text-xl">SwimAcademy</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">

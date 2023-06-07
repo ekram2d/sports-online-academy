@@ -7,8 +7,10 @@ import NavBar from './Pages/Navbar';
 
 const App = () => {
   return (
-    <div>
+    <div >
+      
       <NavBar></NavBar>
+     
      <Outlet></Outlet>
      <Footer></Footer>
     </div>
