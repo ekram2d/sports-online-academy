@@ -13,7 +13,7 @@ const Slider = () => {
             <Carousel className='' >
                   <div className='w-full  h-96  mx-auto'>
                   {/* <p className='text-red-700'>Legend 1</p> */}
-                        <img className='h-72' src='https://s3.amazonaws.com/htw/dt-contest-entries/76936/canada-swim-coaching-athletic-logo-design.png' />
+                        <img   src='https://growbusiness.sg/wp-content/uploads/job-manager-uploads/company_avatar/2018/08/logo.jpg' />
                        
                         <p className='text-2xl'>'Learn to Swim'</p>
                         <p >'Join our swim academy and learn to swim like a pro!'</p>
@@ -22,7 +22,7 @@ const Slider = () => {
                   </div>
                   <div  className='w-full  mx-auto'>
                   {/* <p className='text-red-700'>Legend 1</p> */}
-                        <img className='h-72' src='https://s3.amazonaws.com/htw/dt-contest-entries/77238/canada-swim-coaching-athletic-logo-design.png' />
+                        <img  src='https://s3.amazonaws.com/htw/dt-contest-entries/77238/canada-swim-coaching-athletic-logo-design.png' />
                        
                         <p className='text-2xl'>'Experienced Coaches'</p>
                         <p>Our experienced coaches will guide you through every step</p>
@@ -31,7 +31,7 @@ const Slider = () => {
                   </div>
                   <div  className='w-full mx-auto'>
                   {/* <p className='text-red-700'>Legend 1</p> */}
-                        <img className='h-72' src='https://s3.amazonaws.com/htw/dt-contest-entries/77610/canada-coaching-athletic-swim-logo-design.png' />
+                        <img  src='https://s3.amazonaws.com/htw/dt-contest-entries/77610/canada-coaching-athletic-swim-logo-design.png' />
                        
                         <p className='text-2xl'>'Learn to Swim'</p>
                         <p>'Join our swim academy and learn to swim like a pro!'</p>

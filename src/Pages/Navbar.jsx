@@ -2,19 +2,19 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 const NavBar = () => {
-//   const { user, logOut } = useContext(AuthContext);
-//   const [cart] =useCart();
-//   // console.log(cart)
-//   const[isAdmin] =useAdmin();
-//   const handlelogOut = () => {
+  //   const { user, logOut } = useContext(AuthContext);
+  //   const [cart] =useCart();
+  //   // console.log(cart)
+  //   const[isAdmin] =useAdmin();
+  //   const handlelogOut = () => {
 
-//     logOut()
-//       .then(res => {
+  //     logOut()
+  //       .then(res => {
 
-//       })
-//       .catch(error => console.log(error))
+  //       })
+  //       .catch(error => console.log(error))
 
-//   }
+  //   }
 
   const navOptions = <>
     <li><Link to='/'>Home</Link></li>
@@ -29,7 +29,7 @@ const NavBar = () => {
         <div className="badge badge-secondary">+{1 || 0}</div>
       </button>
     </Link></li>
-{/* 
+    {/* 
     {
       user ? <>
       
@@ -54,7 +54,7 @@ onClick={handlelogOut}*/}
 
           </ul>
         </div>
-        <a className="btn btn-ghost normal-case text-xl">SwimAcademy</a>
+        <a className="btn btn-ghost normal-case text-xl">SportsAcademy</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
@@ -62,7 +62,7 @@ onClick={handlelogOut}*/}
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Get started</a>
+        <Link to='/login' className="btn">Login</Link>
       </div>
     </div>
   );
