@@ -8,19 +8,29 @@ import {
 } from "react-router-dom";
 import Home from './Components/Home/Home/Home.jsx';
 import Login from './Pages/Login.jsx';
+import Authprovider from './providers/Authprovider.jsx';
+import Register from './Pages/Register.jsx';
+
+
+
+
+// import AuthProvider from './providers/AuthProvider.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
     children: [
       {
-        path:"/",
-        element:<Home></Home>
+        path: "/",
+        element: <Home></Home>
 
       },
       {
-        path:'login',
-        element:<Login></Login>
+        path: 'login',
+        element: <Login></Login>
+      },{
+        path:'register',
+        element:<Register></Register>
       }
 
 
@@ -30,9 +40,14 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-   <div className='max-w-screen-lg mx-auto'>
-   <RouterProvider router={router} />
+ <Authprovider>
+    
+ <div className='max-w-screen-lg mx-auto'>
+      <RouterProvider router={router} />
 
-   </div>
+    </div>
+ </Authprovider>
+  
+  
   </React.StrictMode>,
 )

@@ -8,6 +8,11 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 // import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 // const auth = getAuth(app);
+// import { getAuth } from "firebase/auth";
+// import { app } from '../Firebase/firebase.config';
+
+
+// const auth=getAuth(app);
 const Login = () => {
       const captchaRef = useRef(null)
       const [disable, setDisable] = useState(true);

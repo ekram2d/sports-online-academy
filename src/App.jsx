@@ -7,7 +7,7 @@ import NavBar from './Pages/Navbar';
 
 const App = () => {
   const location = useLocation();
-  const noheaderfooter = location.pathname.includes('login');
+  const noheaderfooter = location.pathname.includes('login') || location.pathname.includes('register');
   return (
     <div >
 
