@@ -2,11 +2,12 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../providers/Authprovider';
 import {FaShoppingCart} from"react-icons/fa"
+import useCartClass from '../Hooks/useCartClass';
 const NavBar = () => {
     const { user, logOut } = useContext(AuthContext);
     // console.log(user)
-  //   const [cart] =useCart();
-  //   // console.log(cart)
+    const [classCart,refetch] =useCartClass();
+    // console.log(classCart)
   //   const[isAdmin] =useAdmin();
     const handlelogOut = () => {
 
@@ -23,12 +24,12 @@ const NavBar = () => {
     <li><Link to='/instructor'>Instructors</Link></li>
     <li><Link to='/class'>classes</Link></li>
     {/* ={isAdmin ?'/dashboard/adminhome':'/dashboard/userhome'} */}
-    <li><Link to='/'>DashBoard</Link></li>
-    <li><Link to="/dashboard/mycart">
+    <li><Link to='dashboard'>DashBoard</Link></li>
+    <li><Link to="dashboard">
 
       <button className="btn gap-2">
         <FaShoppingCart></FaShoppingCart>
-        <div className="badge badge-secondary">+{1 || 0}</div>
+        <div className="badge badge-secondary">+{classCart?.length || 0}</div>
       </button>
     </Link></li>
     

@@ -18,6 +18,7 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
+import Dashboard from './Layout/Dashboard.jsx';
 const queryClient = new QueryClient()
 
 
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
 
     ]
   },
+  {
+    path:'dashboard',
+    element:<Dashboard></Dashboard>
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(

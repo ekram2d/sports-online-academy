@@ -8,7 +8,7 @@ import Instructors from './Instructors';
 
 const Home = () => {
       const data = usemenu();
-      console.log(data)
+      // console.log(data)
       return (
             <>
 
