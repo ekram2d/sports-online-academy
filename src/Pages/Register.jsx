@@ -1,58 +1,62 @@
 import React, { useContext, useState } from 'react';
 // import { app } from '../firebase/firebase.config';
+
 import { getAuth } from 'firebase/auth';
 import { useForm } from 'react-hook-form';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 // import { Helmet } from 'react-helmet-async';
 // import { AuthContext } from '../Providers/AuthProvider';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../providers/Authprovider';
+import app from '../Firebase/firebase.config1';
 
 // import SocialLogin from './Shared/SocialLogin/SocialLogin';
 
-// const auth = getAuth(app);
+const auth = getAuth(app);
 const Register = () => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
-//   const { creatuser, UpdateProfile } = useContext(AuthContext)
+  const { creatuser, UpdateProfile } = useContext(AuthContext)
   const nevigate = useNavigate();
+  const[error,setError]=useState('');
   const onSubmit = data => {
     console.log(data);
+        setError(' ');
+    creatuser(data.email, data.password)
+      .then(result => {
+        const user = result.user;
+        console.log(user)
+        UpdateProfile(data.name, data.url)
+          .then(() => {
+            console.log('user profe info updated')
+            const saveUser = { name: data.name, email: data.email ,role:'student'}
+            // fetch('http://localhost:5000/users', {
+            //   method: 'POST',
+            //   headers: {
+            //     'content-type': 'application/json'
+            //   },
+            //   body: JSON.stringify(saveUser)
+            // }
+            // )
+            //   .then(res => res.json())
+            //   .then(data => {
+            //     if (data.insertedId) {
+            //       Swal.fire({
+            //         position: 'top-end',
+            //         icon: 'success',
+            //         title: 'user profe info updated',
+            //         showConfirmButton: false,
+            //         timer: 1500
+            //       })
 
-//     creatuser(data.email, data.password)
-//       .then(result => {
-//         const user = result.user;
-        // console.log(user)
-      //   UpdateProfile(data.name, data.url)
-      //     .then(() => {
-      //       console.log('user profe info updated')
-      //       const saveUser = { name: data.name, email: data.email }
-      //       fetch('http://localhost:5000/users', {
-      //         method: 'POST',
-      //         headers: {
-      //           'content-type': 'application/json'
-      //         },
-      //         body: JSON.stringify(saveUser)
-      //       }
-      //       )
-      //         .then(res => res.json())
-      //         .then(data => {
-      //           if (data.insertedId) {
-      //             Swal.fire({
-      //               position: 'top-end',
-      //               icon: 'success',
-      //               title: 'user profe info updated',
-      //               showConfirmButton: false,
-      //               timer: 1500
-      //             })
+            //     }
+             // })
 
-      //           }
-      //         })
+            //  <Navigate to='/'></Navigate>
+            nevigate('/login')
 
-      //       //  <Navigate to='/'></Navigate>
-      //       nevigate('/')
-
-      //     })
-      //     .catch(error => console.log(error))
-      // })
+          })
+          .catch(error => console.log(error))
+      })
   }
   return (
     <>

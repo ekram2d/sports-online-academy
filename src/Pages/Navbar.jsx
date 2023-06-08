@@ -1,20 +1,22 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../providers/Authprovider';
 
 const NavBar = () => {
-  //   const { user, logOut } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
+    console.log(user)
   //   const [cart] =useCart();
   //   // console.log(cart)
   //   const[isAdmin] =useAdmin();
-  //   const handlelogOut = () => {
+    const handlelogOut = () => {
 
-  //     logOut()
-  //       .then(res => {
+      logOut()
+        .then(res => {
 
-  //       })
-  //       .catch(error => console.log(error))
+        })
+        .catch(error => console.log(error))
 
-  //   }
+    }
 
   const navOptions = <>
     <li><Link to='/'>Home</Link></li>
@@ -29,16 +31,15 @@ const NavBar = () => {
         <div className="badge badge-secondary">+{1 || 0}</div>
       </button>
     </Link></li>
-    {/* 
+    
     {
       user ? <>
       
-        <button  className='btn btn-primary'>LogOut</button></> : <>
-        <li><Link to='/login'>Login</Link></li></>
+        <button onClick={handlelogOut}  className='btn btn-primary'>LogOut</button><img src={user?.photoUrl}></img> <p className='text-center'>{user?.displayName}</p></> : <>
+        <li><Link to='/login'><button className='btn btn-primary'>Login</button></Link></li></>
     } 
 
-    
-onClick={handlelogOut}*/}
+
 
 
   </>
@@ -62,7 +63,7 @@ onClick={handlelogOut}*/}
         </ul>
       </div>
       <div className="navbar-end">
-        <Link to='/login' className="btn">Login</Link>
+        <Link to='/login' className="btn">Started</Link>
       </div>
     </div>
   );

@@ -28,9 +28,9 @@ const router = createBrowserRouter([
       {
         path: 'login',
         element: <Login></Login>
-      },{
-        path:'register',
-        element:<Register></Register>
+      }, {
+        path: 'register',
+        element: <Register></Register>
       }
 
 
@@ -40,14 +40,14 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
- <Authprovider>
-    
- <div className='max-w-screen-lg mx-auto'>
-      <RouterProvider router={router} />
+    <Authprovider>
 
-    </div>
- </Authprovider>
-  
-  
+      <div className='max-w-screen-lg mx-auto'>
+        <RouterProvider router={router} />
+
+      </div>
+    </Authprovider>
+
+
   </React.StrictMode>,
 )
