@@ -20,8 +20,8 @@ const NavBar = () => {
 
   const navOptions = <>
     <li><Link to='/'>Home</Link></li>
-    <li><Link to='/menu'>Instructors</Link></li>
-    <li><Link to='/order/salad'>classes</Link></li>
+    <li><Link to='/instructor'>Instructors</Link></li>
+    <li><Link to='/class'>classes</Link></li>
     {/* ={isAdmin ?'/dashboard/adminhome':'/dashboard/userhome'} */}
     <li><Link to='/'>DashBoard</Link></li>
     <li><Link to="/dashboard/mycart">
