@@ -12,6 +12,7 @@ import Authprovider from './providers/Authprovider.jsx';
 import Register from './Pages/Register.jsx';
 import InstructorFilter from './Pages/InstructorFilter.jsx';
 import ClassDetails from './Pages/ClassDetails.jsx';
+import Privateroute from './Pages/Privateroute.jsx';
 
 
 
