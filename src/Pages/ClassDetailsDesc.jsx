@@ -10,7 +10,7 @@ const ClassDetailsDesc = ({ data }) => {
   const {user}=useContext(AuthContext);
   const location =useLocation();
   const navigate =useNavigate();
-  console.log(user);
+  // console.log(user);
 
   const handleAddtoCart = data => {
 
@@ -63,7 +63,7 @@ const ClassDetailsDesc = ({ data }) => {
         }
       })
     }
-    console.log(data)
+    // console.log(data)
      
 
 
