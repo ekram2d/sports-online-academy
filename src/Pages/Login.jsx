@@ -1,22 +1,22 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
-// import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
-// import { AuthContext } from '../../Providers/AuthProvider';
-// import { app } from '../../firebase/firebase.config';
-// import { getAuth } from 'firebase/auth';
+
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-// import { Helmet } from 'react-helmet-async';
+
 import Swal from 'sweetalert2';
 // import SocialLogin from '../Shared/SocialLogin/SocialLogin';
-// const auth = getAuth(app);
-// import { getAuth } from "firebase/auth";
-// import { app } from '../Firebase/firebase.config';
+
+import { getAuth } from "firebase/auth";
+import app from '../Firebase/firebase.config1';
+import { AuthContext } from '../providers/Authprovider';
 
 
-// const auth=getAuth(app);
+
+const auth=getAuth(app);
 const Login = () => {
       const captchaRef = useRef(null)
       const [disable, setDisable] = useState(true);
-      //   const {signIn}=useContext(AuthContext);
+      const[error,setError]=useState('');
+        const {signIn}=useContext(AuthContext);
       const navigate = useNavigate();
       const location = useLocation();
       const from = location.state?.from?.pathname || "/"
@@ -29,43 +29,25 @@ const Login = () => {
             const form = event.target;
             const email = form.email.value;
             const password = form.password.value;
-            // console.log(email,password)
-            // signIn(email,password)
-            // .then(result=>{
-            //   const user =result.user;
-            //   console.log(user);
-            //   Swal.fire({
-            //     title: 'User Login Successful',
-            //     showClass: {
-            //       popup: 'animate__animated animate__fadeInDown'
-            //     },
-            //     hideClass: {
-            //       popup: 'animate__animated animate__fadeOutUp'
-            //     }
-            //   });
-            //   navigate(from,{replace:true});
-            // })
+            console.log(email,password)
+            signIn(email,password)
+            .then(result=>{
+              const user =result.user;
+              console.log(user);
+              Swal.fire({
+                title: 'User Login Successful',
+                showClass: {
+                  popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                  popup: 'animate__animated animate__fadeOutUp'
+                }
+              });
+              navigate(from,{replace:true});
+            })
+            .catch(error=>setError(error.message))
       }
 
-
-
-
-      //    const handleValidateCaptcha=(e)=>{
-      //     const value = e.target.value;
-      //     setDisable(false)
-      //     if(validateCaptcha(value)){
-      //       // console.log(value)
-      //       setDisable(false);
-
-      //     }
-      //     else{
-      //       setDisable(true)
-
-      //     }
-
-      //     // console.log(e.target.capcha.value)
-
-      //    }
       return (
             <>
                   {/* <Helmet>
@@ -74,7 +56,7 @@ const Login = () => {
 
       </Helmet> */}
                   <div className="hero min-h-screen bg-base-200">
-                        <div className="hero-content flex-col md:flex-row-reverse">
+                        <div><div className="hero-content flex-col md:flex-row-reverse">
                               <div className="text-center md:w-1/2 lg:text-left">
                                     <h1 className="text-5xl font-bold">Login now!</h1>
 
@@ -110,13 +92,20 @@ const Login = () => {
 
                                                 <input className="btn btn-primary" type="submit" value="Login" />
                                           </div>
+                                          <div>
+                                          <p className='text-center text-red-600'>{error}</p>
+                                          </div>
                                     </form>
 
                                     <p><small>New Here ? <Link to='/register'>Create an Account</Link></small></p>
                                     {/* <SocialLogin></SocialLogin> */}
                               </div>
                         </div>
+                       </div>
+                     
                   </div>
+                
+                 
             </>
       );
 };

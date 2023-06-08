@@ -6,7 +6,7 @@ import { Link, Navigate, useNavigate } from 'react-router-dom';
 // import { Helmet } from 'react-helmet-async';
 // import { AuthContext } from '../Providers/AuthProvider';
 import Swal from 'sweetalert2';
-import { app } from '../Firebase/firebase.config1';
+
 // import SocialLogin from './Shared/SocialLogin/SocialLogin';
 
 // const auth = getAuth(app);
