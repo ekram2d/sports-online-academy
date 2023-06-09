@@ -9,6 +9,7 @@ import { Link, Navigate, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../providers/Authprovider';
 import app from '../Firebase/firebase.config1';
+import SocialLogin from './SocialLogin';
 
 // import SocialLogin from './Shared/SocialLogin/SocialLogin';
 
@@ -47,12 +48,12 @@ const Register = () => {
                     showConfirmButton: false,
                     timer: 1500
                   })
-
+                  nevigate('/')
                 }
               })
 
             //  <Navigate to='/'></Navigate>
-            nevigate('/')
+            
 
           })
           .catch(error => console.log(error))
@@ -61,7 +62,7 @@ const Register = () => {
   return (
     <>
 
-      <div className="hero min-h-screen bg-base-200">
+      <div className="hero min-h-screen bg-base-200 text-center text-white">
         <div className="hero-content flex-col md:flex-row-reverse">
           <div className="text-center md:w-1/2 lg:text-left">
             <h1 className="text-5xl font-bold">Register now!</h1>
@@ -111,7 +112,8 @@ const Register = () => {
             </form>
 
             <p><small>Have an account? <Link to='/login'>Go to Login</Link></small></p>
-            <p>social</p>
+           
+            <SocialLogin></SocialLogin>
             {/* <SocialLogin></SocialLogin> */}
           </div>
         </div>

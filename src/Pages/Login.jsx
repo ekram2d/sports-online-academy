@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
 import { getAuth } from "firebase/auth";
 import app from '../Firebase/firebase.config1';
 import { AuthContext } from '../providers/Authprovider';
+import SocialLogin from './SocialLogin';
 
 
 
@@ -56,7 +57,7 @@ const Login = () => {
 
 
       </Helmet> */}
-                  <div className="hero min-h-screen bg-base-200">
+                  <div className="hero min-h-screen bg-base-200 text-white">
                         <div><div className="hero-content flex-col md:flex-row-reverse">
                               <div className="text-center md:w-1/2 lg:text-left">
                                     <h1 className="text-5xl font-bold">Login now!</h1>
@@ -85,9 +86,7 @@ const Login = () => {
                                                 </label>
                                                 {/* <input  onBlur={handleValidateCaptcha} type="text" name='capcha' placeholder="type the text above" className="input input-bordered" /> */}
                                                 {/* <button className='btn btn-outline btn-xs'>validate</button> */}
-                                                <label className="label">
-                                                      <a href="#" className="label-text-alt link link-hover mt-2">Forgot password?</a>
-                                                </label>
+                                                
                                           </div>
                                           <div className="form-control mt-6">
 
@@ -98,7 +97,8 @@ const Login = () => {
                                           </div>
                                     </form>
 
-                                    <p><small>New Here ? <Link to='/register'>Create an Account</Link></small></p>
+                                    <p className='text-center'> <small>New Here ? <Link to='/register'>Create an Account</Link></small></p>
+                                    <SocialLogin></SocialLogin>
                                     {/* <SocialLogin></SocialLogin> */}
                               </div>
                         </div>
