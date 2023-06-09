@@ -17,42 +17,42 @@ const Register = () => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const { creatuser, UpdateProfile } = useContext(AuthContext)
   const nevigate = useNavigate();
-  const[error,setError]=useState('');
+  const [error, setError] = useState('');
   const onSubmit = data => {
-    console.log(data);
-        setError(' ');
+    // console.log(data);
+    setError(' ');
     creatuser(data.email, data.password)
       .then(result => {
         const user = result.user;
         console.log(user)
         UpdateProfile(data.name, data.url)
           .then(() => {
-            console.log('user profe info updated')
-            const saveUser = { name: data.name, email: data.email ,role:'student'}
-            // fetch('http://localhost:5000/users', {
-            //   method: 'POST',
-            //   headers: {
-            //     'content-type': 'application/json'
-            //   },
-            //   body: JSON.stringify(saveUser)
-            // }
-            // )
-            //   .then(res => res.json())
-            //   .then(data => {
-            //     if (data.insertedId) {
-            //       Swal.fire({
-            //         position: 'top-end',
-            //         icon: 'success',
-            //         title: 'user profe info updated',
-            //         showConfirmButton: false,
-            //         timer: 1500
-            //       })
+            // console.log('user profe info updated')
+            const saveUser = { name: data.name, email: data.email, role: 'student' }
+            fetch('http://localhost:5001/users', {
+              method: 'POST',
+              headers: {
+                'content-type': 'application/json'
+              },
+              body: JSON.stringify(saveUser)
+            }
+            )
+              .then(res => res.json())
+              .then(data => {
+                if (data.insertedId) {
+                  Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'user created  successfully',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
 
-            //     }
-             // })
+                }
+              })
 
             //  <Navigate to='/'></Navigate>
-            nevigate('/login')
+            nevigate('/')
 
           })
           .catch(error => console.log(error))
@@ -60,12 +60,12 @@ const Register = () => {
   }
   return (
     <>
-     
+
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col md:flex-row-reverse">
           <div className="text-center md:w-1/2 lg:text-left">
             <h1 className="text-5xl font-bold">Register now!</h1>
-        
+
           </div>
           <div className="card  md:w-1/2  max-w-sm shadow-2xl bg-base-100">
             <form onSubmit={handleSubmit(onSubmit)} className="card-body">
