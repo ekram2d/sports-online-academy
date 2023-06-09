@@ -3,6 +3,7 @@ import { AuthContext } from '../providers/Authprovider';
 import Swal from 'sweetalert2';
 import { useLocation, useNavigate } from 'react-router-dom';
 import useCartClass from '../Hooks/useCartClass';
+import useAdmin from '../Hooks/useAdmin';
 
 const ClassDetailsDesc = ({ data }) => {
 
@@ -11,8 +12,11 @@ const ClassDetailsDesc = ({ data }) => {
   const {user}=useContext(AuthContext);
   const location =useLocation();
   const navigate =useNavigate();
-  // console.log(user);
+
+  const [isAdmin,,] = useAdmin();
   const[,refetch]=useCartClass();
+  const isInstructor =false;
+  console.log(isAdmin);
 
   const handleAddtoCart = data => {
 
@@ -82,7 +86,8 @@ const ClassDetailsDesc = ({ data }) => {
         <p>availableSeats: {availableSeats}</p>
         <p>price: ${price}</p>
         <div className="card-actions">
-          <button onClick={() => handleAddtoCart(data)} className="btn btn-primary">Select</button>
+          {/* {useAdmin &&   <button onClick={() => handleAddtoCart(data)} className="btn btn-primary">Select</button>} */}
+        {isAdmin ?<><button className="btn bg-white text-black btn-sm btn-disabled">Select</button></>:<>{isInstructor?<><button className="btn bg-white text-black btn-sm btn-disabled">Select</button></>:<>  <button onClick={() => handleAddtoCart(data)} className="btn btn-primary">Select</button></>}</>}
         </div>
       </div>
     </div>

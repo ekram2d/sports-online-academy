@@ -21,7 +21,7 @@ const MangeUser = () => {
             },
 
       })
-      const handleAdmin=(id,data)=>{
+      const handleAdmin=(user,data)=>{
             // console.log(id);
 
             const data1 = {
@@ -29,7 +29,7 @@ const MangeUser = () => {
                   
                 };
                 
-                fetch(`http://localhost:5001/users/admin/${id}`, {
+                fetch(`http://localhost:5001/users/admin/${user?._id}`, {
                   method: 'PATCH',
                   headers: {
                     'Content-Type': 'application/json',
@@ -45,7 +45,7 @@ const MangeUser = () => {
                         Swal.fire({
                               position: 'top-end',
                               icon: 'success',
-                              title: `Your are now ${data}`,
+                              title: `${user?.name} are now ${data}`,
                               showConfirmButton: false,
                               timer: 1500
                             })
@@ -82,7 +82,7 @@ const MangeUser = () => {
                                     {/* row 1 */}
                                     {
                                           userscart?.map((user,index)=>
-                                                <tr key={user._id}>
+                                                <tr key={user?._id}>
                                                 <th>
                                                      {index+1}
                                                 </th>
@@ -102,7 +102,7 @@ const MangeUser = () => {
                                                 <td>{user?.role}</td>
                                                 <th>
                                                      {
-                                                      user?.role !='admin' ? <button onClick={()=>handleAdmin(user?._id,'admin')} className="btn btn-primary btn-sm">
+                                                      user?.role !='admin' ? <button onClick={()=>handleAdmin(user,'admin')} className="btn btn-primary btn-sm">
                                                         <BiUserCircle></BiUserCircle>
 
                                                       </button>: <button  className="btn btn-sm bg-white btn-disabled"> <BiUserCircle></BiUserCircle></button>
@@ -110,7 +110,7 @@ const MangeUser = () => {
                                                 </th>
                                                 <th>
                                                 {
-                                                      user?.role !='instructor' ? <button onClick={()=>handleAdmin(user?._id,'instructor')} className="btn btn-primary btn-sm">
+                                                      user?.role !='instructor' ? <button onClick={()=>handleAdmin(user,'instructor')} className="btn btn-primary btn-sm">
                                                             <BiUserCheck></BiUserCheck>
                                                       </button>: <button  className="btn btn-sm bg-white  btn-disabled"><BiUserCheck></BiUserCheck></button>
                                                      }

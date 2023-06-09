@@ -2,14 +2,17 @@ import React, { useCallback, useContext } from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import Authprovider, { AuthContext } from '../providers/Authprovider';
 import MycartClass from '../Pages/Dashboard/Mycart/MycartClass';
+import useAdmin from '../Hooks/useAdmin';
 
 const Dashboard = () => {
   const { user } = useContext(AuthContext);
   // TODO data from the server dynamic admin 
 
-  const isAdmin = true;
+  // const isAdmin = true;
+  const [isAdmin,,] = useAdmin();
   const isInstructor = false;
-  const location = useLocation();
+  const location = useLocation(isAdmin);
+  console.log(isAdmin)
   // console.log(location.pathname.split('/')[2])
   return (
     <div className="drawer lg:drawer-open ">

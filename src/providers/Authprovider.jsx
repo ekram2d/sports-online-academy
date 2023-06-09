@@ -9,6 +9,7 @@ import app from '../Firebase/firebase.config1';
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 
 import { GoogleAuthProvider } from "firebase/auth";
+import axios from 'axios';
 
 
 
@@ -52,20 +53,20 @@ const Authprovider = ({children}) => {
               setUser(currentuser);
               setLoading(false)
             //   console.log("current user",currentuser);
-            //get and set token 
-            // if(currentuser){
-            //       axios.post('http://localhost:5000/jwt',{email:currentuser.email})
-            //       .then(data=>{
-            //             // console.log(data.data.token)
-            //             localStorage.setItem('access-token',data.data.token);
-            //             setLoading(false)
+           // get and set token 
+            if(currentuser){
+                  axios.post('http://localhost:5001/jwt',{email:currentuser.email})
+                  .then(data=>{
+                        // console.log(data.data.token)
+                        localStorage.setItem('access-token',data.data.token);
+                        setLoading(false)
                   
                   
-            //       })
-            // }else{
+                  })
+            }else{
 
-            //       localStorage.removeItem('access-token');
-            // }
+                  localStorage.removeItem('access-token');
+            }
              
             })
             return ()=>{
