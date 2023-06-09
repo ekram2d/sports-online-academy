@@ -22,6 +22,7 @@ import Dashboard from './Layout/Dashboard.jsx';
 import MycartClass from './Pages/Dashboard/Mycart/MycartClass.jsx';
 
 import Enroll from './Pages/Dashboard/Mycart/Myenroll/Enroll.jsx';
+import PaymentHistory from './Pages/Dashboard/Mycart/Payment/PaymentHistory.jsx';
 const queryClient = new QueryClient()
 
 
@@ -50,7 +51,8 @@ const router = createBrowserRouter([
       {
         path: '/class',
         element: <ClassDetails></ClassDetails>
-      }
+      },
+      
 
 
     ]
@@ -70,6 +72,10 @@ const router = createBrowserRouter([
         path:'enroll',
         element:<Enroll></Enroll>
       },
+      {
+        path: 'payhistory',
+        element: <PaymentHistory></PaymentHistory>
+      }
      
 
     ]
