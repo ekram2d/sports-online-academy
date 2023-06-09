@@ -5,6 +5,10 @@ import MycartClass from '../Pages/Dashboard/Mycart/MycartClass';
 
 const Dashboard = () => {
   const { user } = useContext(AuthContext);
+  // TODO data from the server dynamic admin 
+
+  const isAdmin = true;
+  const isInstructor = false;
   const location = useLocation();
   // console.log(location.pathname.split('/')[2])
   return (
@@ -23,9 +27,19 @@ const Dashboard = () => {
         <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
           {/* Sidebar content here */}
           {/* students deshboard */}
-          {user ? <><li><Link className='font-bold' to='/dashboard/mycartclass'>My cart Class</Link></li>
-            <li><Link className='font-bold' to='/dashboard/enroll'>My enroll Class</Link></li>
-            <li><Link className='font-bold' to='/dashboard/payhistory'>Payment History</Link></li></> : <><button className='btn btn-primary'><Link to='/login' className='text-center'>Please Login </Link></button></>}
+
+
+          {
+            isAdmin ? <><li><Link className='font-bold' to='/dashboard/manageclass'>Manage Classes</Link></li>
+              <li><Link className='font-bold' to='/dashboard/manageusers'>Manage Users</Link></li>
+            </> : <>{
+              isInstructor ? <><li><Link className='font-bold' to='/dashboard/myclass'>My Class</Link></li>
+              <li><Link className='font-bold' to='/dashboard/addclass'>Add Class</Link></li></> : <><li><Link className='font-bold' to='/dashboard/mycartclass'>My cart Class</Link></li>
+                <li><Link className='font-bold' to='/dashboard/enroll'>My enroll Class</Link></li>
+                <li><Link className='font-bold' to='/dashboard/payhistory'>Payment History</Link></li></>
+            }</>
+          }
+          {/* {user ? } */}
 
 
           <div className='divider'></div>

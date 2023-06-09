@@ -23,6 +23,8 @@ import MycartClass from './Pages/Dashboard/Mycart/MycartClass.jsx';
 
 import Enroll from './Pages/Dashboard/Mycart/Myenroll/Enroll.jsx';
 import PaymentHistory from './Pages/Dashboard/Mycart/Payment/PaymentHistory.jsx';
+import MangeUser from './Pages/Dashboard/Admin/MangeUser.jsx';
+import ManageClasses from './Pages/Dashboard/Admin/ManageClasses.jsx';
 const queryClient = new QueryClient()
 
 
@@ -75,6 +77,12 @@ const router = createBrowserRouter([
       {
         path: 'payhistory',
         element: <PaymentHistory></PaymentHistory>
+      },{
+        path:'manageusers',
+        element:<MangeUser></MangeUser>
+      },{
+        path:'manageclass',
+        element:<ManageClasses></ManageClasses>
       }
      
 

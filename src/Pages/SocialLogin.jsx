@@ -25,8 +25,8 @@ const SocialLogin = () => {
                       }
                       )
                         .then(res => res.json())
-                        .then(data => {
-                          if (data.insertedId) {
+                        .then(() => {
+                        //   if (data.insertedId) {
                             Swal.fire({
                               position: 'top-end',
                               icon: 'success',
@@ -35,7 +35,7 @@ const SocialLogin = () => {
                               timer: 1500
                             })
                             navigate(from,{replace:true});
-                          }
+                        //   }
                         })
           
 
