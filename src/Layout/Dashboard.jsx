@@ -3,16 +3,19 @@ import { Link, Outlet, useLocation } from 'react-router-dom';
 import Authprovider, { AuthContext } from '../providers/Authprovider';
 import MycartClass from '../Pages/Dashboard/Mycart/MycartClass';
 import useAdmin from '../Hooks/useAdmin';
+import useInstructor from '../Hooks/useInstructor';
+
 
 const Dashboard = () => {
   const { user } = useContext(AuthContext);
   // TODO data from the server dynamic admin 
 
-  // const isAdmin = true;
-  const [isAdmin,,] = useAdmin();
-  const isInstructor = false;
+  const [isInstructor, ] = useInstructor()
+  const [isAdmin, ] = useAdmin();
+ 
+  console.log(isInstructor)
   const location = useLocation(isAdmin);
-  console.log(isAdmin)
+
   // console.log(location.pathname.split('/')[2])
   return (
     <div className="drawer lg:drawer-open ">
@@ -31,18 +34,20 @@ const Dashboard = () => {
           {/* Sidebar content here */}
           {/* students deshboard */}
 
-
           {
             isAdmin ? <><li><Link className='font-bold' to='/dashboard/manageclass'>Manage Classes</Link></li>
               <li><Link className='font-bold' to='/dashboard/manageusers'>Manage Users</Link></li>
             </> : <>{
               isInstructor ? <><li><Link className='font-bold' to='/dashboard/myclass'>My Class</Link></li>
-              <li><Link className='font-bold' to='/dashboard/addclass'>Add Class</Link></li></> : <><li><Link className='font-bold' to='/dashboard/mycartclass'>My cart Class</Link></li>
+                <li><Link className='font-bold' to='/dashboard/addclass'>Add Class</Link></li></> : <><li><Link className='font-bold' to='/dashboard/mycartclass'>My cart Class</Link></li>
                 <li><Link className='font-bold' to='/dashboard/enroll'>My enroll Class</Link></li>
                 <li><Link className='font-bold' to='/dashboard/payhistory'>Payment History</Link></li></>
+
             }</>
           }
-          {/* {user ? } */}
+
+
+
 
 
           <div className='divider'></div>

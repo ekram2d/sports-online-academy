@@ -8,9 +8,9 @@ const useAdmin = () => {
 
       const { user,loading } = useContext(AuthContext);
       const [axiosSecure] = useAxiosSecure();
-
+   
       const { refetch, data: isAdmin,isLoading:isAdminLoading } = useQuery({
-            queryKey: ['carts', user?.email],
+            queryKey: ['isAdmin',user?.email],
             enabled: !loading,
             queryFn: async () => {
                   const res = await axiosSecure(`/users/admin/${user?.email}`)
@@ -18,7 +18,7 @@ const useAdmin = () => {
                   return res.data.admin;
             },
       })
-      return [isAdmin,refetch,isAdminLoading]
+      return [isAdmin,isAdminLoading]
 
 };
 
