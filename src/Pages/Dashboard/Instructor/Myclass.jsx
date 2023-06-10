@@ -2,8 +2,8 @@ import React from 'react';
 
 const Myclass = () => {
       return (
-            <div>
-                  My class instr
+            <div className='w-full ms-3'>
+                  <h3>Add a class</h3>
             </div>
       );
 };

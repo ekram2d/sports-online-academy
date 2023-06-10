@@ -14,22 +14,22 @@ const useInstructor = () => {
   
     const { user,loading } = useContext(AuthContext);
     const [axiosSecure] = useAxiosSecure();
-    console.log("load",loading)
+//     console.log("load",loading)
     const { refetch, data: isInstructor,isLoading:isInstructorLoading } = useQuery({
           queryKey: ['isInstructor',user?.email],
           enabled: !loading,
           queryFn: async () => {
                 const res = await axiosSecure(`/users/instructor/${user?.email}`)
-                console.log('res from axios', res)
+            //     console.log('res from axios', res)
                 return res.data.instructor;
           },
     })
 
-    console.log('isinsta',isInstructorLoading);
+//     console.log('isinsta',isInstructorLoading);
     return [isInstructor,isInstructorLoading]
       };
       
-      export default useInstructor;
+export default useInstructor;
 
 
 

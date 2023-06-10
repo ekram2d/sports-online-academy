@@ -3,21 +3,23 @@ import { AuthContext } from '../../../providers/Authprovider';
 import { useQuery } from '@tanstack/react-query';
 import { BiUserCheck,BiUserCircle} from "react-icons/bi";
 import Swal from 'sweetalert2';
+import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 const MangeUser = () => {
 
       const { user, loading } = useContext(AuthContext);
+      const[axiosSecure]=useAxiosSecure();
       const { isLoading, refetch, data: userscart = [], error } = useQuery({
             queryKey: ['users'],
             enabled: !loading,
             queryFn: async () => {
 
-                  const response = await fetch('http://localhost:5001/users')
+                  const response = await axiosSecure.get('/users')
                   // , {
                   //       headers: {
                   //             authorization: `bearer ${token}`
                   //       }
                   // })
-                  return response.json()
+                  return response.data;
             },
 
       })
