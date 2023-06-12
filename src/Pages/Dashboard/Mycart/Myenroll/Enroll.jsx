@@ -25,7 +25,7 @@ const Enroll = () => {
                         console.error('Error retrieving enrollments:', error);
                   });
       }, [axiosSecure, user?.email]);
-      console.log(data)
+      // console.log(data)
       return (
             <>
                   <div >
