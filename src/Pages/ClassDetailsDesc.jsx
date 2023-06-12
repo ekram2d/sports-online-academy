@@ -5,6 +5,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import useCartClass from '../Hooks/useCartClass';
 import useAdmin from '../Hooks/useAdmin';
 import useInstructor from '../Hooks/useInstructor';
+// import useInstructor from '../Hooks/useInstructor';
 
 
 const ClassDetailsDesc = ({ data }) => {

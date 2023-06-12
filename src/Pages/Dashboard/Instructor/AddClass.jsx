@@ -18,7 +18,8 @@ const AddClass = () => {
       const onSubmit = data => {
 
 
-            const instructorImage = user?.photoURL;
+            // const instructorImage = user?.photoURL;
+            console.log(data);
             const formData = new FormData();
             formData.append('image', data.imageclass[0]);
             // formData.append('classImage', data.classImage[0])
@@ -30,10 +31,15 @@ const AddClass = () => {
             })
             .then(res => res.json())
             .then(imgResponse => {
-                        if (imgResponse.success) {
-                              const imgURL = imgResponse.data.display_url;
+                  console.log(imgResponse)
+                       if (imgResponse.success) {
+                       
+                             const imgURL=imgResponse?.data?.display_url;
+                             console.log(imgURL);
+                            //  console.log(imgURL)
+                            const Feedback='';
                               const { className, name, email, availableSeats, price, status } = data;
-                              const newItem = { className, name, price: parseFloat(price), availableSeats: parseInt(availableSeats), email, status,classImage: imgURL, image: user?.photoURL }
+                              const newItem = { className, name, price: parseFloat(price), availableSeats: parseInt(availableSeats), email, status,classImage: imgURL, image: user?.photoURL,Feedback }
                               console.log(newItem)
                               axiosSecure.post('/data', newItem)
                                     .then(data => {

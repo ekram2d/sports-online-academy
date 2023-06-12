@@ -3,7 +3,7 @@ import usemenu from '../Hooks/usemenu';
 import ClassDetailsDesc from './ClassDetailsDesc';
 
 const ClassDetails = () => {
-      const data=usemenu();
+      const [data,]=usemenu();
       return (
             <div className='lg:grid lg:grid-cols-2 gap-3 '>
             {

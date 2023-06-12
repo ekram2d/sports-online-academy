@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useCartClass from '../../../Hooks/useCartClass';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
+import Payment from './Payment/Payment';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+import CheckoutForm from './Payment/CheckoutForm';
+import MycartItem from './Mycart/MycartItem';
 
+// const stripePromise = loadStripe(import.meta.env.VITE_Payment_Getway_PK);
 const MycartClass = () => {
-      const [cart,refetch] = useCartClass();
+      const [cart, refetch] = useCartClass();
+      const [set,setState]=useState(false)
 
       // console.log(cart)
       const total = cart.reduce((sum, item) => item.price + sum, 0)
@@ -47,66 +55,20 @@ const MycartClass = () => {
                   <div className='lg:flex justify-between items-center '>
                         <h3 className='text-2xl'>Total Class select:{cart.length}</h3>
                         <h3 className='text-2xl'>Total: ${total}</h3>
-                        <button className='btn btn-sm btn-warning'>Pay</button>
+                        {/* <Link to='/dashboard/payment'><button className='btn btn-sm btn-warning'>Pay</button></Link> */}
                   </div>
-                  <div className="overflow-x-auto mt-3">
-                        <table className="table ">
-                              {/* head */}
-                              <thead className='font-bold text-black'>
-                                    <tr>
-                                          <th>
-                                                #
-                                          </th>
-                                          <th>Class Image</th>
-                                          <th>Class Name</th>
-                                          <th>Price</th>
-                                          <th>Action</th>
-                                    </tr>
-                              </thead>
-                              <tbody>
-                                    {/* row 1 */}
+                  <div className='w-full lg:grid grid-cols-1 gap-4'>
+          
+                  {
 
-                                    {
-                                          cart?.map((item, index) =>
-                                                <tr key={item._id}>
-                                                      <th>
-                                                            <label>
-                                                                  {index + 1}
-                                                            </label>
-                                                      </th>
-                                                      <td>
-                                                            <div className="flex items-center space-x-3">
-                                                                  <div className="avatar">
-                                                                        <img src={item.classImage} alt="" />
-                                                                  </div>
+cart?.map((item, index) => 
+     <MycartItem key={item._id} item={item} refetch={refetch} ></MycartItem>
+)
 
-                                                            </div>
-                                                      </td>
-                                                      <td>
-                                                            <div>
-                                                                  <div className="">{item.className}</div>
-
-                                                            </div>
-
-                                                      </td>
-                                                      <td>{item.price}</td>
-                                                      <th>
-                                                            <button onClick={() => hanldleDelete(item._id)} className='btn btn-sm btn-warning'>delete</button>
-                                                      </th>
-                                                </tr>
-                                          )
-                                    }
-
-
-
-
-                              </tbody>
-
-
-
-                        </table>
+}
                   </div>
 
+                 
             </div>
       );
 };

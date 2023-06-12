@@ -29,6 +29,8 @@ import Myclass from './Pages/Dashboard/Instructor/Myclass.jsx';
 import AddClass from './Pages/Dashboard/Instructor/AddClass.jsx';
 import PrivateRouteAdmin from './Pages/Dashboard/Instructor/PrivateRouteInstructor.jsx';
 import PrivateRouteInstructor from './Pages/Dashboard/Instructor/PrivateRouteInstructor.jsx';
+import UpdateClass from './Pages/Dashboard/Instructor/UpdateClass.jsx';
+import Payment from './Pages/Dashboard/Mycart/Payment/Payment.jsx';
 const queryClient = new QueryClient()
 
 
@@ -81,6 +83,11 @@ const router = createBrowserRouter([
       {
         path: 'payhistory',
         element: <PaymentHistory></PaymentHistory>
+      },
+      
+      {
+        path:'payment',
+        element:<Payment></Payment>
       },{
         path:'manageusers',
         element:<MangeUser></MangeUser>
@@ -89,12 +96,16 @@ const router = createBrowserRouter([
         element:<ManageClasses></ManageClasses>
       },{
         path:'myclass',
-        element:<Myclass></Myclass>
+        element:<PrivateRouteInstructor><Myclass></Myclass></PrivateRouteInstructor>
       },
       {
         
           path:'addclass',
           element: <PrivateRouteInstructor><AddClass></AddClass></PrivateRouteInstructor>
+        },
+        {
+          path:"update",
+          element:<PrivateRouteInstructor><UpdateClass></UpdateClass></PrivateRouteInstructor>
         }
      
 

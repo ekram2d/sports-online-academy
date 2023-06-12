@@ -3,7 +3,7 @@ import usemenu from '../Hooks/usemenu';
 import Instructors from '../Components/Home/Home/Instructors';
 
 const InstructorFilter = () => {
-      const data=usemenu();
+      const [data,]=usemenu();
       return (
            
                   <div className='lg:grid lg:grid-cols-2 gap-3 '>

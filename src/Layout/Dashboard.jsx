@@ -10,9 +10,9 @@ const Dashboard = () => {
   const { user } = useContext(AuthContext);
   // TODO data from the server dynamic admin 
 
-  const [isInstructor, ] = useInstructor()
-  const [isAdmin, ] = useAdmin();
- 
+  const [isInstructor,] = useInstructor()
+  const [isAdmin,] = useAdmin();
+
   console.log(isInstructor)
   const location = useLocation(isAdmin);
 
