@@ -16,21 +16,21 @@ import SocialLogin from './SocialLogin';
 const auth = getAuth(app);
 const Register = () => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
-  const { creatuser, UpdateProfile } = useContext(AuthContext)
+  const { createUser, updateUserProfile } = useContext(AuthContext)
   const nevigate = useNavigate();
   const [error, setError] = useState('');
   const onSubmit = data => {
     // console.log(data);
     setError(' ');
-    creatuser(data.email, data.password)
+    createUser(data.email, data.password)
       .then(result => {
         const user = result.user;
         console.log(user)
-        UpdateProfile(data.name, data.url)
+        updateUserProfile(data.name, data.url)
           .then(() => {
             // console.log('user profe info updated')
             const saveUser = { name: data.name, email: data.email, role: 'student' }
-            fetch('http://localhost:5001/users', {
+            fetch('https://summer-camp-server-opal.vercel.app/users', {
               method: 'POST',
               headers: {
                 'content-type': 'application/json'

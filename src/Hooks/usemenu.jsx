@@ -9,7 +9,7 @@ const[axiosSecure] =useAxiosSecure();
 // const [loading,setLoading]=useState(true);
 
 // useEffect(()=>{
-// fetch('http://localhost:5001/data')
+// fetch('https://summer-camp-server-opal.vercel.app/data')
 // .then(res=>res.json())
 // .then(data=>{
       
@@ -23,7 +23,7 @@ const[axiosSecure] =useAxiosSecure();
 const { refetch, data:data=[],isLoading:isdataLoading } = useQuery({
       queryKey: ['data'],
       queryFn: async () => {
-            const res = await fetch('http://localhost:5001/data')
+            const res = await fetch('https://summer-camp-server-opal.vercel.app/data')
         //     console.log('res from axios', res)
             return res.json();
       },

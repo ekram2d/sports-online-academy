@@ -31,7 +31,7 @@ const MangeUser = () => {
                   
                 };
                 
-                fetch(`http://localhost:5001/users/admin/${user?._id}`, {
+                fetch(`https://summer-camp-server-opal.vercel.app/users/admin/${user?._id}`, {
                   method: 'PATCH',
                   headers: {
                     'Content-Type': 'application/json',

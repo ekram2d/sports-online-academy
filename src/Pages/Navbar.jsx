@@ -1,14 +1,18 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../providers/Authprovider';
 import { FaShoppingCart } from "react-icons/fa"
 import useCartClass from '../Hooks/useCartClass';
+import useAdmin from '../Hooks/useAdmin';
+import useInstructor from '../Hooks/useInstructor';
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
   // console.log(user.photoURL)
   const [classCart, refetch] = useCartClass();
   // console.log(classCart)
-  //   const[isAdmin] =useAdmin();
+    const[isAdmin] =useAdmin();
+    const[isInstructor]=useInstructor();
+    console.log(isAdmin,isInstructor)
   const handlelogOut = () => {
 
     logOut()
@@ -20,18 +24,20 @@ const NavBar = () => {
   }
 
   const navOptions = <>
-    <li><Link to='/'>Home</Link></li>
-    <li><Link to='/instructor'>Instructors</Link></li>
-    <li><Link to='/class'>classes</Link></li>
+    <li><NavLink to='/'>Home</NavLink></li>
+    <li><NavLink to='/instructor'>Instructors</NavLink></li>
+    <li><NavLink to='/class'>classes</NavLink></li>
     {/* ={isAdmin ?'/dashboard/adminhome':'/dashboard/userhome'} */}
-    <li><Link to='dashboard'>DashBoard</Link></li>
-    <li><Link to="dashboard">
-
-      <button className="btn btn-sm gap-2 ">
+    <li><NavLink to='dashboard'>DashBoard</NavLink></li>
+    <li><NavLink to="dashboard">
+    {/* {
+      !isAdmin
+    } */}
+      {isAdmin || isInstructor || <button className="btn btn-sm gap-2 ">
         <FaShoppingCart></FaShoppingCart>
         <div className="badge badge-secondary ">+{classCart?.length || 0}</div>
-      </button>
-    </Link></li>
+      </button> }
+    </NavLink></li>
 
     {
       user ? <>
@@ -48,7 +54,7 @@ const NavBar = () => {
 
   </>
   return (
-    <div className="navbar  fixed z-10 bg-opacity-80 bg-slate-500 text-white max-w-screen-lg  rounded-lg font-bold">
+    <div className="navbar  fixed z-10 bg-opacity-80 bg-indigo-950 text-white max-w-screen-lg  rounded-lg font-bold">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
