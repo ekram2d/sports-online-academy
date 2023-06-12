@@ -7,6 +7,7 @@ import { AuthContext } from '../../../providers/Authprovider';
 import { BiCommentCheck } from 'react-icons/bi';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
+import TotalEnrolled from './TotalEnrolled';
 
 const Myclass = () => {
       const[classdata,,refetch]=useInstructorData();
@@ -64,6 +65,7 @@ const Myclass = () => {
 
             event.target.reset(); // Reset the form
       }
+      console.log(classdata)
 
       return (
             <>
@@ -86,7 +88,7 @@ const Myclass = () => {
                                                 <tr key={classItem._id}>
                                                       <td className="px-4 py-2">{index + 1}</td>
                                                       <td className="px-4 py-2">{classItem.className}</td>
-                                                      <td className="px-4 py-2">{classItem.totalEnrolledStudents}</td>
+                                                      <td className="px-4 py-2"><TotalEnrolled classItem={classItem}></TotalEnrolled></td>
                                                       <td className="px-4 py-2">{classItem.status}</td>
                                                       <td className="px-4 py-2">{classItem.Feedback}</td>
                                                       <td className="px-4 py-2">

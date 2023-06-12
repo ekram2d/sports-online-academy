@@ -40,9 +40,9 @@ const PaymentHistory = () => {
                               <tbody>
                                     {/* row 1 */}
                                     {
-                                          data?.map((item,index) =>
+                                          data?.map((item, index) =>
                                                 <tr>
-                                                      <th>{index+1}</th>
+                                                      <th>{index + 1}</th>
                                                       <td>{item.userEmail}</td>
                                                       <td>{item.trensactionId}</td>
                                                       <td>{item.data}</td>
