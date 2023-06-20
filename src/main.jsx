@@ -12,7 +12,7 @@ import Authprovider from './providers/Authprovider.jsx';
 import Register from './Pages/Register.jsx';
 import InstructorFilter from './Pages/InstructorFilter.jsx';
 import ClassDetails from './Pages/ClassDetails.jsx';
-import Privateroute from './Pages/Privateroute.jsx';
+// import Privateroute from './Pages/Privateroute.jsx';
 import {
 
   QueryClient,
@@ -27,10 +27,14 @@ import MangeUser from './Pages/Dashboard/Admin/MangeUser.jsx';
 import ManageClasses from './Pages/Dashboard/Admin/ManageClasses.jsx';
 import Myclass from './Pages/Dashboard/Instructor/Myclass.jsx';
 import AddClass from './Pages/Dashboard/Instructor/AddClass.jsx';
-import PrivateRouteAdmin from './Pages/Dashboard/Instructor/PrivateRouteInstructor.jsx';
+// import PrivateRouteAdmin from './Pages/Dashboard/Instructor/PrivateRouteInstructor.jsx';
 import PrivateRouteInstructor from './Pages/Dashboard/Instructor/PrivateRouteInstructor.jsx';
 import UpdateClass from './Pages/Dashboard/Instructor/UpdateClass.jsx';
 import Payment from './Pages/Dashboard/Mycart/Payment/Payment.jsx';
+import Erropage from './Pages/Dashboard/Mycart/Erropage.jsx';
+import PrivRoute from './providers/PrivRoute.jsx';
+import ThemeProvider from './providers/ThemeProvider.jsx';
+import PrivateRouteAdmin from './Pages/Dashboard/Admin/PrivateRouteAdmin.jsx';
 const queryClient = new QueryClient()
 
 
@@ -39,10 +43,12 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
+    errorElement: <Erropage></Erropage>,
     children: [
       {
         path: "/",
-        element: <Home></Home>
+        element: <Home></Home>,
+
 
       },
       {
@@ -60,54 +66,55 @@ const router = createBrowserRouter([
         path: '/class',
         element: <ClassDetails></ClassDetails>
       },
-      
+
 
 
     ]
   },
   {
-    path:'dashboard',
-    element: <Privateroute><Dashboard></Dashboard></Privateroute>,
+    path: 'dashboard',
+    element: <PrivRoute><Dashboard></Dashboard></PrivRoute>,
+    errorElement: <Erropage></Erropage>,
     children: [
 
 
       {
-        path:'mycartclass',
-        element:<MycartClass></MycartClass>
+        path: 'mycartclass',
+        element: <MycartClass></MycartClass>
 
       },
       {
-        path:'enroll',
-        element:<Enroll></Enroll>
+        path: 'enroll',
+        element: <Enroll></Enroll>
       },
       {
         path: 'payhistory',
         element: <PaymentHistory></PaymentHistory>
       },
-      
+
       {
-        path:'payment',
-        element:<Payment></Payment>
-      },{
-        path:'manageusers',
-        element:<MangeUser></MangeUser>
-      },{
-        path:'manageclass',
-        element:<ManageClasses></ManageClasses>
-      },{
-        path:'myclass',
-        element:<PrivateRouteInstructor><Myclass></Myclass></PrivateRouteInstructor>
+        path: 'payment',
+        element: <Payment></Payment>
+      }, {
+        path: 'manageusers',
+        element: <PrivateRouteAdmin><MangeUser></MangeUser></PrivateRouteAdmin>
+      }, {
+        path: 'manageclass',
+        element: <PrivateRouteAdmin><ManageClasses></ManageClasses></PrivateRouteAdmin>
+      }, {
+        path: 'myclass',
+        element: <PrivateRouteInstructor><Myclass></Myclass></PrivateRouteInstructor>
       },
       {
-        
-          path:'addclass',
-          element: <PrivateRouteInstructor><AddClass></AddClass></PrivateRouteInstructor>
-        },
-        {
-          path:"update",
-          element:<PrivateRouteInstructor><UpdateClass></UpdateClass></PrivateRouteInstructor>
-        }
-     
+
+        path: 'addclass',
+        element: <PrivateRouteInstructor><AddClass></AddClass></PrivateRouteInstructor>
+      },
+      {
+        path: "update",
+        element: <PrivateRouteInstructor><UpdateClass></UpdateClass></PrivateRouteInstructor>
+      }
+
 
     ]
   }
@@ -117,10 +124,12 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Authprovider>
       <QueryClientProvider client={queryClient}>
-        <div className='max-w-screen-lg mx-auto'>
-          <RouterProvider router={router} />
+        <ThemeProvider>
+          <div className='max-w-screen-lg mx-auto'>
+            <RouterProvider router={router} />
 
-        </div>
+          </div>
+        </ThemeProvider>
       </QueryClientProvider>
 
 

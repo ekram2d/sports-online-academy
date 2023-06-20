@@ -1,12 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 .dark .heading {
-      color: white;
-    }
-    
-    /* Home.module.css */
-    
-    .dark .container {
-      background-color: #222;
-    }
+  color: white;
+}
+
+/* Home.module.css */
+
+.dark .container {
+  background-color: #222;
+}
+
+
+.dark{
+  @apply bg-black text-white
+}
+
+.light{
+  @apply bg-light text-black
+}
+

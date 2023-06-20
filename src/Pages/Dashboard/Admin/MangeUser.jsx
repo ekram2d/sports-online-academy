@@ -7,6 +7,7 @@ import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 const MangeUser = () => {
 
       const { user, loading } = useContext(AuthContext);
+      // console.log(user);
       const[axiosSecure]=useAxiosSecure();
       const { isLoading, refetch, data: userscart = [], error } = useQuery({
             queryKey: ['users'],
@@ -23,15 +24,15 @@ const MangeUser = () => {
             },
 
       })
-      const handleAdmin=(user,data)=>{
+      const handleAdmin=(id,data)=>{
             // console.log(id);
 
             const data1 = {
                   field1: data, // Replace 'new_value1' with the new value for field1
                   
                 };
-                
-                fetch(`https://summer-camp-server-opal.vercel.app/users/admin/${user?._id}`, {
+                console.log(id,data)
+                fetch(`https://summer-camp-server-opal.vercel.app/users/admin/${id}`, {
                   method: 'PATCH',
                   headers: {
                     'Content-Type': 'application/json',
@@ -47,7 +48,7 @@ const MangeUser = () => {
                         Swal.fire({
                               position: 'top-end',
                               icon: 'success',
-                              title: `${user?.name} are now ${data}`,
+                              title: `the role for user ,now ${data}`,
                               showConfirmButton: false,
                               timer: 1500
                             })
@@ -104,15 +105,16 @@ const MangeUser = () => {
                                                 <td>{user?.role}</td>
                                                 <th>
                                                      {
-                                                      user?.role !='admin' ? <button onClick={()=>handleAdmin(user,'admin')} className="btn btn-primary btn-sm">
+                                                      user?.role !='admin' ? <button onClick={()=>handleAdmin(user?._id,'admin')} className="btn btn-primary btn-sm">
                                                         <BiUserCircle></BiUserCircle>
 
                                                       </button>: <button  className="btn btn-sm bg-white btn-disabled"> <BiUserCircle></BiUserCircle></button>
                                                      }
+                                                     {/* <p>{user?._id}</p> */}
                                                 </th>
                                                 <th>
                                                 {
-                                                      user?.role !='instructor' ? <button onClick={()=>handleAdmin(user,'instructor')} className="btn btn-primary btn-sm">
+                                                      user?.role !='instructor' ? <button onClick={()=>handleAdmin(user?._id,'instructor')} className="btn btn-primary btn-sm">
                                                             <BiUserCheck></BiUserCheck>
                                                       </button>: <button  className="btn btn-sm bg-white  btn-disabled"><BiUserCheck></BiUserCheck></button>
                                                      }

@@ -10,6 +10,8 @@ import Swal from 'sweetalert2';
 import { AuthContext } from '../providers/Authprovider';
 import app from '../Firebase/firebase.config1';
 import SocialLogin from './SocialLogin';
+import lottieImage from './../../public/login.json'
+import Lottie from "lottie-react";
 
 // import SocialLogin from './Shared/SocialLogin/SocialLogin';
 
@@ -65,7 +67,8 @@ const Register = () => {
       <div className="hero min-h-screen bg-base-200 text-center text-white">
         <div className="hero-content flex-col md:flex-row-reverse">
           <div className="text-center md:w-1/2 lg:text-left">
-            <h1 className="text-5xl font-bold">Register now!</h1>
+            {/* <h1 className="text-5xl font-bold">Register now!</h1> */}
+            <Lottie animationData={lottieImage} loop={true} />
 
           </div>
           <div className="card  md:w-1/2  max-w-sm shadow-2xl bg-base-100">

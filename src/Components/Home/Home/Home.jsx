@@ -1,18 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { motion } from 'framer-motion';
 
 import Slider from './Slider/Slider';
 import usemenu from '../../../Hooks/usemenu';
 import ClaseeDes from './ClaseeDes';
 import Instructors from './Instructors';
+// import { ThemeContext } from '../../../providers/ThemeProvider';
 
 const Home = () => {
+  
+
   const [data,] = usemenu();
 
   return (
-    <>
+    <div>
+     
       <Slider />
-      
+
+      {/* <button onClick={toggleMode}>Toggle Theme</button> */}
+
       <h1 className='text-center text-2xl m-3 font-bold'>Popular Classes Section</h1>
       <div className='lg:grid lg:grid-cols-2 gap-3'>
         {data?.slice(0, 6).map((data, index) => (
@@ -81,7 +87,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

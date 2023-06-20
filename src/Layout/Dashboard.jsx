@@ -5,6 +5,8 @@ import Authprovider, { AuthContext } from '../providers/Authprovider';
 import MycartClass from '../Pages/Dashboard/Mycart/MycartClass';
 import useAdmin from '../Hooks/useAdmin';
 import useInstructor from '../Hooks/useInstructor';
+import { FaAddressBook, FaBeer,FaCaretDown,FaCartPlus,FaHome,FaMoneyBill,FaStackExchange,FaUser } from 'react-icons/fa';
+import { BiBeenHere, BiHomeAlt, BiHomeAlt2 } from 'react-icons/bi';
 
 const Dashboard = () => {
   const { user } = useContext(AuthContext);
@@ -13,7 +15,7 @@ const Dashboard = () => {
   // const isAdmin =true;
   const location = useLocation();
   console.log(location.pathname);
-console.log(isAdmin);
+console.log('is',isInstructor);
   return (
     <div className="drawer lg:drawer-open ">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -49,7 +51,7 @@ console.log(isAdmin);
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <h3 className='uppercase font-bold'>Please click the left side button</h3>
+            <h3 className='uppercase font-bold'>Please click the Your Dashboard button</h3>
             {/* Add your desired animation components or elements here */}
           </motion.div>
         )}
@@ -60,13 +62,16 @@ console.log(isAdmin);
           {isAdmin ? (
             <>
               <li>
+        
                 <NavLink className=' font-bold btn btn-primary m-2' to='/dashboard/manageclass'>
-                  Manage Classes
+                <BiBeenHere></BiBeenHere>   Manage Classes
+     
+
                 </NavLink>
               </li>
               <li>
                 <NavLink className=' font-bold btn btn-primary m-2' to='/dashboard/manageusers'>
-                  Manage Users
+                <FaUser></FaUser> Manage Users
                 </NavLink>
               </li>
             </>
@@ -76,12 +81,12 @@ console.log(isAdmin);
                 <>
                   <li>
                     <NavLink className=' font-bold btn btn-primary m-2' to='/dashboard/myclass'>
-                      My Class
+                    <FaStackExchange></FaStackExchange> My Class
                     </NavLink>
                   </li>
                   <li>
                     <NavLink className=' font-bold btn btn-primary m-2'to='/dashboard/addclass'>
-                      Add Class
+                  <FaAddressBook></FaAddressBook>  Add Class
                     </NavLink>
                   </li>
                 </>
@@ -89,18 +94,18 @@ console.log(isAdmin);
                 <>
                   <li>
                     <NavLink className=' font-bold btn btn-primary m-2' to='/dashboard/mycartclass'>
-                      My cart Class
+                  <FaCartPlus></FaCartPlus>  My cart Class
                     </NavLink>
                   </li>
                   <li>
                     <NavLink className=' font-bold btn btn-primary m-2' to='/dashboard/enroll'>
-                      My enroll Class
+                      <FaCaretDown></FaCaretDown> My enroll Class
                     </NavLink>
                   </li>
                   <li>
                   
                     <NavLink className=' font-bold btn btn-primary m-2' to='/dashboard/payhistory'>
-                      Payment History
+                    <FaMoneyBill></FaMoneyBill>  Payment History
                     </NavLink>
                   </li>
                 </>
@@ -110,7 +115,7 @@ console.log(isAdmin);
           <div className='divider'></div>
           <li>
             <Link to='/' className=' font-bold btn btn-primary m-2'>
-              Home
+            <FaHome></FaHome>Home
             </Link>
           </li>
         </ul>

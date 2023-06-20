@@ -5,7 +5,7 @@ import { FaShoppingCart } from "react-icons/fa"
 import useCartClass from '../Hooks/useCartClass';
 import useAdmin from '../Hooks/useAdmin';
 import useInstructor from '../Hooks/useInstructor';
-const NavBar = () => {
+const NavBar = ({toggleMode}) => {
   const { user, logOut } = useContext(AuthContext);
   // console.log(user.photoURL)
   const [classCart, refetch] = useCartClass();
@@ -24,16 +24,17 @@ const NavBar = () => {
   }
 
   const navOptions = <>
+   <li className='bg-white rounded  '><input  onClick={toggleMode} type="checkbox" className="toggle toggle-lg   bg-white " checked /></li>
     <li><NavLink to='/'>Home</NavLink></li>
     <li><NavLink to='/instructor'>Instructors</NavLink></li>
     <li><NavLink to='/class'>classes</NavLink></li>
     {/* ={isAdmin ?'/dashboard/adminhome':'/dashboard/userhome'} */}
-    <li><NavLink to='dashboard'>DashBoard</NavLink></li>
+   {user &&  <li><NavLink to='dashboard'>DashBoard</NavLink></li>}
     <li><NavLink to="dashboard">
     {/* {
       !isAdmin
     } */}
-      {isAdmin || isInstructor || <button className="btn btn-sm gap-2 ">
+      {isAdmin || isInstructor || !user|| <button className="btn btn-sm gap-2 ">
         <FaShoppingCart></FaShoppingCart>
         <div className="badge badge-secondary ">+{classCart?.length || 0}</div>
       </button> }
@@ -47,7 +48,9 @@ const NavBar = () => {
      
         </> : <>
         <li><Link to='/login'><button className='btn btn-primary btn-sm'>Login</button></Link></li></>
+       
     }
+   
 
 
 

@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 
 import axios from "axios";
+// import { app } from "../Firebase/firebase.config1";
 import app from "../Firebase/firebase.config1";
 
 export const AuthContext = createContext(null);
@@ -49,7 +50,7 @@ const AuthProvider = ({ children }) => {
             if(currentUser){
                 axios.post('https://summer-camp-server-opal.vercel.app/jwt', {email: currentUser.email})
                 .then(data =>{
-                    // console.log(data.data.token)
+                    console.log(data.data.token)
                     localStorage.setItem('access-token', data.data.token)
                     setLoading(false);
                 })

@@ -10,7 +10,8 @@ import app from '../Firebase/firebase.config1';
 import { AuthContext } from '../providers/Authprovider';
 import SocialLogin from './SocialLogin';
 
-
+import lottieImage from './../../public/login.json'
+import Lottie from "lottie-react";
 
 const auth=getAuth(app);
 const Login = () => {
@@ -60,7 +61,8 @@ const Login = () => {
                   <div className="hero min-h-screen bg-base-200 text-white">
                         <div><div className="hero-content flex-col md:flex-row-reverse">
                               <div className="text-center md:w-1/2 lg:text-left">
-                                    <h1 className="text-5xl font-bold">Login now!</h1>
+                                    {/* <h1 className="text-5xl font-bold">Login now!</h1> */}
+                                    <Lottie animationData={lottieImage} loop={true} />
 
                               </div>
                               <div className="card  md:w-1/2  max-w-sm shadow-2xl bg-base-100">
